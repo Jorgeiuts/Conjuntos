@@ -6,8 +6,8 @@ public class Conjuntos {
     public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
-        HashSet<String> lenguage1 = new HashSet();
-        HashSet<String> lenguage2 = new HashSet();
+        HashSet<String> lenguage1 = new HashSet<>();
+        HashSet<String> lenguage2 = new HashSet<>();
         int numberOfWords;
         int menuValue = 0;
 
@@ -33,6 +33,8 @@ public class Conjuntos {
             action(menuValue, lenguage1, lenguage2);
         }
 
+        System.out.println("Gracias por usar la aplicacion :D");
+
     }
 
     public static void showMenu() {
@@ -57,10 +59,13 @@ public class Conjuntos {
                 difference(lenguage1, lenguaje2);
                 break;
             case 3:
+                concatenate(lenguage1, lenguaje2);
                 break;
             case 4:
+                prefix();
                 break;
             case 5:
+                suffix();
                 break;
             case 6:
                 break;
@@ -102,6 +107,53 @@ public class Conjuntos {
             System.out.print(word + ", ");
         }
         System.out.println("}");
+    }
+
+    public static void concatenate(HashSet<String> lenguage1, HashSet<String> lenguage2){
+        HashSet<String> concatenate = new HashSet<>();
+
+        for (String word1: lenguage1) {
+            for (String word2: lenguage2) {
+                concatenate.add(word1 + word2);
+            }
+        }
+
+        System.out.println("El resultado es: ");
+        System.out.print("{ ");
+        for (String word: concatenate) {
+            System.out.print(word + ", ");
+        }
+        System.out.println("}");
+    }
+
+    public static void prefix() {
+        Scanner s = new Scanner(System.in);
+        String word;
+        int length;
+
+        System.out.println("Ingrese su palabra porfavor: ");
+        word = s.next();
+        length = word.length() + 1;
+
+        for (int i = 0; i < length; i++) {
+            System.out.println(word);
+            word = word.substring(0, word.length() - 1);
+        }
+    }
+
+    public static void suffix() {
+        Scanner scanner = new Scanner(System.in);
+        String word;
+        int length;
+
+        System.out.println("Ingrese su palabra porfavor:");
+        word = scanner.next();
+        length = word.length() + 1;
+
+        for (int i = 0; i < length; i++) {
+            System.out.println(word);
+            word = word.substring(1);
+        }
     }
 
 }
